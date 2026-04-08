@@ -1,28 +1,38 @@
 @import "tailwindcss";
+@plugin "@tailwindcss/typography";
+
+@theme {
+  /* Definimos los colores de marca */
+  --color-emerald-700: #15803d;
+  --color-emerald-800: #166534;
+  --color-gold-500: #D4AF37;
+
+  --font-stolen: "var(--font-stolenLove)", serif;
+  --font-sans: "var(--font-inter)", sans-serif;
+}
 
 :root {
   --background: #ffffff;
-  /* --foreground: #171717; */
-  --foreground: #ffffff;
-}
-
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    /* --background: #0a0a0a; */
-    --foreground: #ededed;
-    --background: #ededed;
-  }
+  --foreground: #111827;
 }
 
 body {
-  background: var(--background);
+  background-color: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-stolen);
+  -webkit-font-smoothing: antialiased;
+}
+
+.prose h1, .prose h2, .prose h3 {
+  font-family: var(--font-stolen);
+  color: #111827 !important;
+}
+
+.prose strong {
+  color: #111827 !important;
+  font-weight: 700;
+}
+
+.prose em {
+  font-style: italic;
 }

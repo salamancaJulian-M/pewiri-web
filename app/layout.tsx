@@ -1,17 +1,16 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
+import localFont from 'next/font/local';
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
+const stolenLove = localFont({
+  src: [
+    { path: './fonts/StolenLoveBlack.otf', weight: '900', style: 'normal' },
+    { path: './fonts/StolenLoveBold.otf', weight: '700', style: 'normal' },
+    { path: './fonts/StolenLoveExtraBold.otf', weight: '800', style: 'normal' },
+  ],
+  variable: '--font-stolenLove',
 });
 
 export const metadata: Metadata = {
@@ -27,7 +26,7 @@ export default function RootLayout({
   return (
     <html lang="es">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${stolenLove.variable} antialiased`}
       >
         <Navbar/>
           <main>
