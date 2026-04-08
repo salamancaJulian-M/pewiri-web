@@ -1,19 +1,19 @@
-"use client"; // Necesario para usar hooks de estado y efectos
+"use client";
 
 import Image from 'next/image';
 import Link from 'next/link';
 import { useEffect, useState } from 'react';
 import { usePathname } from 'next/navigation';
 
-const Navbar = () => {
+export default function Navbar () {
   const [isScrolled, setIsScrolled] = useState(false);
   const pathname = usePathname();
 
-  // Cambia el estado al hacer scroll para animar el navbar
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 50);
     };
+    handleScroll()
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
@@ -27,16 +27,16 @@ const Navbar = () => {
 
   return (
     <nav className={`fixed w-full z-50 transition-all duration-300 ${
-      isScrolled ? 'bg-white/90 backdrop-blur-md py-2 shadow-sm' : 'bg-transparent py-6'
+      isScrolled ? 'bg-white/90 backdrop-blur-md py-2 shadow-sm' : 'bg-transparent py-3'
     }`}>
       <div className="max-w-7xl mx-auto px-6 flex justify-between items-center">
         
         {/* Logo como Imagen */}
         <Link href="/" className="relative transition-all duration-300">
           <Image
-            src="/logo.png"
+            src="/LogoTransparente.png"
             alt="Pewiri Joyería Logo"
-            width={isScrolled ? 120 : 160}
+            width={120}
             height={50}
             className="object-contain"
             priority
@@ -50,7 +50,7 @@ const Navbar = () => {
               key={link.name}
               href={link.href}
               className={`text-xs uppercase tracking-[0.2em] transition-colors ${
-                pathname === link.href ? 'text-gold-600 font-semibold' : 'text-gray-800 hover:text-gold-500'
+                pathname === link.href ? 'text-emerald-700 font-bold' : isScrolled ? 'text-gray-800 hover:text-emerald-600' : 'text-white hover:text-gray-300'
               }`}
             >
               {link.name}
@@ -59,7 +59,7 @@ const Navbar = () => {
           
           <Link 
             href="/contacto"
-            className="border border-black px-6 py-2 text-xs uppercase tracking-widest hover:bg-black hover:text-white transition-all"
+            className={`border border-black px-6 py-2 text-xs uppercase tracking-widest transition-all hover:bg-black hover:text-white ${isScrolled ? 'text-gray-800':'text-white'} `}
           >
             Contacto
           </Link>
@@ -68,5 +68,3 @@ const Navbar = () => {
     </nav>
   );
 };
-
-export default Navbar;
