@@ -9,11 +9,13 @@ export default function Navbar () {
   const [isScrolled, setIsScrolled] = useState(false);
   const pathname = usePathname();
 
+  const isHomePage = pathname === '/';
+
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 50);
     };
-    handleScroll()
+    handleScroll();
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
@@ -25,13 +27,16 @@ export default function Navbar () {
     { name: 'Nosotros', href: '/acerca' },
   ];
 
+  const navbarBg = isScrolled || !isHomePage 
+    ? 'bg-white/90 backdrop-blur-md py-2 shadow-sm' 
+    : 'bg-transparent py-3';
+
+  const textColor = isScrolled || !isHomePage ? 'text-gray-800' : 'text-white';
+
   return (
-    <nav className={`fixed w-full z-50 transition-all duration-300 ${
-      isScrolled ? 'bg-white/90 backdrop-blur-md py-2 shadow-sm' : 'bg-transparent py-3'
-    }`}>
+    <nav className={`fixed w-full z-50 text-sm transition-all duration-300 ${navbarBg}`}>
       <div className="max-w-7xl mx-auto px-6 flex justify-between items-center">
         
-        {/* Logo como Imagen */}
         <Link href="/" className="relative transition-all duration-300">
           <Image
             src="/LogoTransparente.png"
@@ -49,8 +54,10 @@ export default function Navbar () {
             <Link
               key={link.name}
               href={link.href}
-              className={`text-xs uppercase tracking-[0.2em] transition-colors ${
-                pathname === link.href ? 'text-emerald-700 font-bold' : isScrolled ? 'text-gray-800 hover:text-emerald-600' : 'text-white hover:text-gray-300'
+              className={`uppercase tracking-[0.2em] transition-colors ${
+                pathname === link.href 
+                  ? 'text-emerald-700 font-bold' 
+                  : `${textColor} hover:text-emerald-600`
               }`}
             >
               {link.name}
@@ -59,7 +66,11 @@ export default function Navbar () {
           
           <Link 
             href="/contacto"
-            className={`border border-black px-6 py-2 text-xs uppercase tracking-widest transition-all hover:bg-black hover:text-white ${isScrolled ? 'text-gray-800':'text-white'} `}
+            className={`border px-6 py-2 uppercase tracking-widest transition-all hover:bg-black hover:text-white ${
+              isScrolled || !isHomePage 
+                ? 'border-black text-gray-800' 
+                : 'border-white text-white'
+            }`}
           >
             Contacto
           </Link>
