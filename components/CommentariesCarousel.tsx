@@ -8,7 +8,7 @@ interface Props {
   initialData: Commentary[];
 }
 
-export default function ComentariesCarousel({ initialData }: Props) {
+export default function ComentariesCarousel({ initialData = [] }: Props) {
   const [index, setIndex] = useState(0);
   const [fade, setFade] = useState(true);
 
@@ -29,9 +29,10 @@ export default function ComentariesCarousel({ initialData }: Props) {
   };
 
   useEffect(() => {
+    if (initialData.length <= 1) return;
     const timer = setInterval(handleNext, 5000);
     return () => clearInterval(timer);
-  }, [handleNext]);
+  }, [handleNext, initialData.length]);
 
   return (
     <section 

@@ -1,7 +1,14 @@
 import Image from "next/image";
 import Link from "next/link";
 
-export default function cardCategory({name, image, description, slug}){
+interface CardCategoryProps {
+  name: string;
+  image: string;
+  description?: string;
+  slug: string;
+}
+
+export default function CardCategory({name, image, description, slug} : CardCategoryProps){
   return(
     <Link href={`/joyas/${slug}`} className="group block text-center">
       <div className="relative aspect-square overflow-hidden bg-gray-100 rounded-sm mb-4">
@@ -13,7 +20,7 @@ export default function cardCategory({name, image, description, slug}){
           className="object-cover transition-transform duration-500 group-hover:scale-105"
         />
       </div>
-      <h3 className="text-sm uppercase tracking-widest text-gray-900 group-hover:text-gold-600 transition-colors">
+      <h3 className="text-sm uppercase tracking-widest text-gray-900 group-hover:text-emerald-700 transition-colors">
         {name}
       </h3>
     </Link>

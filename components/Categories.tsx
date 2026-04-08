@@ -16,12 +16,12 @@ export default async function Categories() {
       {/* Grid Responsivo */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
         {categories.map((category) => (
-          <CardCategory 
-            key={category.id} 
-            name={category.name} 
-            image={category.image} 
+          <CardCategory
+            key={category.id}
+            name={category.name}
+            image={category.image}
             description={category.description} 
-            slug={category.slug}
+            slug={category.slug || "#"}
           />
         ))}
       </div>

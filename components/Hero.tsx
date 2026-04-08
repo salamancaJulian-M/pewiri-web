@@ -6,7 +6,7 @@ export default async function Hero() {
 
   const style = {
     hero:"relative h-[80vh] flex flex-col items-center justify-center text-white bg-cover bg-center",
-  }
+  };
   
   return (
     <div id="hero" className={style.hero} style={{backgroundImage:`url(${image})`}}>
