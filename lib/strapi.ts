@@ -10,7 +10,7 @@ export async function getStrapiData(url: string) {
     }
 
     const data = await response.json()
-    return data.data
+    return data
   } catch(error){
     console.error('Error fetching data:', error);
     return null
