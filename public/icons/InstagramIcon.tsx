@@ -1,4 +1,6 @@
-export const InstagramIcon = ({ className }) => (
+import type { className } from "@/types/className";
+
+export const InstagramIcon = ({ className }: className) => (
   <svg
     className={className}
     fill="currentColor"

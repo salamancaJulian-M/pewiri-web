@@ -1,4 +1,6 @@
-export const WhatsAppIcon = ({ className }) => (
+import { className } from "@/types/className";
+
+export const WhatsAppIcon = ({ className }: className) => (
   <svg
     className={className}
     fill="currentColor"
