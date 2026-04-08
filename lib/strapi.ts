@@ -1,5 +1,8 @@
 import { STRAPI_HOST, STRAPI_TOKEN } from "./config";
 export async function getStrapiData(url: string) {
+
+  console.log(STRAPI_HOST);
+  
   try{
     const response = await fetch(`${STRAPI_HOST}/api/${url}`, {
       headers:{
