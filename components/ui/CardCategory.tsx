@@ -20,7 +20,7 @@ export default function CardCategory({name, image, description, slug} : CardCate
           className="object-cover transition-transform duration-500 group-hover:scale-105"
         />
       </div>
-      <h3 className="text-sm uppercase tracking-widest text-gray-900 group-hover:text-emerald-700 transition-colors">
+      <h3 className="text-sm uppercase font-semibold tracking-widest text-gray-900 group-hover:text-emerald-700 transition-colors">
         {name}
       </h3>
     </Link>

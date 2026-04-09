@@ -16,7 +16,7 @@ export default async function Hero() {
         <h1 className="text-5xl font-serif mb-4">{title}</h1>
       </div>
       <div className="text-center px-4 z-10">
-        <p className="text-lg max-w-2xl font-light tracking-wide">{description}</p>
+        <p className="text-xl max-w-2xl tracking-wide">{description}</p>
       </div>
     </div>
     );
