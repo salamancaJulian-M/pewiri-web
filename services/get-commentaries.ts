@@ -3,8 +3,8 @@ import type { Commentary } from '@/types/commentary';
 
 
 export async function getCommentaries() {
-  const response = await getStrapiData("opinions")
-  
+  const response = await getStrapiData("opinions");
+
   if (!response?.data) return [];
 
   return response.data.map((item: Commentary) => ({
