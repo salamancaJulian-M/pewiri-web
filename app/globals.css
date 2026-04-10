@@ -7,8 +7,8 @@
   --color-emerald-800: #166534;
   --color-gold-500: #D4AF37;
 
-  --font-stolen: "var(--font-stolenLove)", serif;
-  --font-sans: "var(--font-inter)", sans-serif;
+  --font-stolen: var(--font-stolenLove);
+  --font-merriweather: var(--font-merriweather), serif;
 }
 
 :root {
@@ -19,20 +19,6 @@
 body {
   background-color: var(--background);
   color: var(--foreground);
-  font-family: var(--font-stolen);
+  font-family: var(--font-merriweather) !important;
   -webkit-font-smoothing: antialiased;
-}
-
-.prose h1, .prose h2, .prose h3 {
-  font-family: var(--font-stolen);
-  color: #111827 !important;
-}
-
-.prose strong {
-  color: #111827 !important;
-  font-weight: 700;
-}
-
-.prose em {
-  font-style: italic;
 }
