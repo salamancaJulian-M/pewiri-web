@@ -5,7 +5,7 @@ export async function getAboutUs() {
   const response = await getStrapiData("about-us?populate[Image1][fields][0]=url&populate[Image2][fields][0]=url&populate[Image3][fields][0]=url&populate[ImageTeam][fields][0]=url");
   if (!response?.data) return null;
 
-  const raw = response.data;  
+  const raw = response.data;
 
   return {
     title: raw.Title,

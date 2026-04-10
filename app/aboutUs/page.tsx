@@ -33,15 +33,15 @@ export default async function AcercaPage() {
           </article>
         </div>
       </div>
-      
+
       {data.imageTeam && (
         <section className="mt-32 pt-20 border-t border-gray-100 flex flex-col items-center">
-            <div className="relative w-full h-[500px] mb-12 overflow-hidden rounded-sm shadow-lg">
-                <Image src={data.imageTeam} alt="Equipo" fill className="object-cover" />
-            </div>
-            <article className={`${style}`}>
-                <BlocksRenderer content={data.textTeam} />
-            </article>
+          <div className="relative w-full h-[500px] mb-12 overflow-hidden rounded-sm shadow-lg">
+            <Image src={data.imageTeam} alt="Equipo" fill className="object-cover object-top" />
+          </div>
+          <article className={`${style}`}>
+            <BlocksRenderer content={data.textTeam} />
+          </article>
         </section>
       )}
     </main>
