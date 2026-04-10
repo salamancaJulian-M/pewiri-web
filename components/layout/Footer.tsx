@@ -1,18 +1,18 @@
 import { getContact } from '@/services/get-contact';
-import {WhatsAppIcon} from '@/public/icons/WhatsAppIcon'
-import {InstagramIcon} from '@/public/icons/InstagramIcon'
+import { WhatsAppIcon } from '@/public/icons/WhatsAppIcon'
+import { InstagramIcon } from '@/public/icons/InstagramIcon'
 
 
 export default async function Footer() {
   const currentYear = new Date().getFullYear();
-  const {number, message} = await getContact();
+  const { number, message } = await getContact();
 
-  const formatMessage = (message : string) => {
+  const formatMessage = (message: string) => {
     return message.replaceAll(" ", "%20");
   };
 
   const text = formatMessage(message);
-  
+
   return (
     <footer className="text-gray-800 border-t border-white/5">
       <div className="max-w-7xl mx-auto px-6 py-5">
@@ -20,13 +20,13 @@ export default async function Footer() {
           <p className="uppercase tracking-widest">
             © {currentYear} PEWIRI EMERALDS.
           </p>
-          
+
           <div className="flex gap-6">
-            <a href="https://www.instagram.com/pewiriemeralds/" className="hover:text-emerald-700 transition-colors">
+            <a href="https://www.instagram.com/pewiriemeralds/" target='_blank' className="hover:text-emerald-700 transition-colors transition-transform hover:scale-[1.2] duration-500">
               <span className="sr-only">Instagram</span>
               <InstagramIcon className="w-6 h-6" />
             </a>
-            <a href={`https://wa.me/${number}?text=${text}`} className="hover:text-emerald-700 transition-colors">
+            <a href={`https://wa.me/${number}?text=${text}`} target='_blank' className="hover:text-emerald-700 transition-colors transition-transform hover:scale-[1.2] duration-500">
               <span className="sr-only">Whatsapp</span>
               <WhatsAppIcon className="w-6 h-6" />
             </a>
