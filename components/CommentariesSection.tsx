@@ -6,5 +6,5 @@ export default async function CommentariesSection() {
 
   if (!testimonials || testimonials.length === 0) return null;
 
-  return <CommentariesCarousel initialData={testimonials} />;
+  return <CommentariesCarousel commentaries={testimonials} />;
 }

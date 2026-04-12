@@ -2,55 +2,54 @@
 
 import type { Commentary } from '@/types/commentary';
 
-import React, { useState, useEffect, useCallback } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 
 interface Props {
-  initialData: Commentary[];
+  commentaries: Commentary[];
 }
 
-export default function ComentariesCarousel({ initialData = [] }: Props) {
+export default function ComentariesCarousel({ commentaries = [] }: Props) {
   const [index, setIndex] = useState(0);
   const [fade, setFade] = useState(true);
 
   const handleNext = useCallback(() => {
     setFade(false);
     setTimeout(() => {
-      setIndex((prev) => (prev + 1 === initialData.length ? 0 : prev + 1));
+      setIndex((prev) => (prev + 1 === commentaries.length ? 0 : prev + 1));
       setFade(true);
     }, 300);
-  }, [initialData.length]);
+  }, [commentaries.length]);
 
   const handlePrev = () => {
     setFade(false);
     setTimeout(() => {
-      setIndex((prev) => (prev - 1 < 0 ? initialData.length - 1 : prev - 1));
+      setIndex((prev) => (prev - 1 < 0 ? commentaries.length - 1 : prev - 1));
       setFade(true);
     }, 300);
   };
 
   useEffect(() => {
-    if (initialData.length <= 1) return;
+    if (commentaries.length <= 1) return;
     const timer = setInterval(handleNext, 5000);
     return () => clearInterval(timer);
-  }, [handleNext, initialData.length]);
+  }, [handleNext, commentaries.length]);
 
   return (
-    <section 
-      style={{ backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('/bgCommentaries.webp')` }} 
+    <section
+      style={{ backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('/bgCommentaries.webp')` }}
       className="py-20 bg-neutral-900 overflow-hidden bg-cover bg-center bg-no-repeat"
     >
       <div className="max-w-4xl mx-auto px-6 text-center">
-        
-        <div className={`min-h-[250px] flex flex-col justify-center transition-opacity duration-300 ease-in-out ${
-          fade ? 'opacity-100' : 'opacity-0'
-        }`}>
-          
+
+        <div className={`min-h-[250px] flex flex-col justify-center transition-opacity duration-300 ease-in-out ${fade ? 'opacity-100' : 'opacity-0'
+          }`}>
+
           <div className="flex justify-center gap-1 mb-6">
             {[...Array(5)].map((_, i: number) => (
               <svg
                 key={i}
                 viewBox="0 0 24 24"
-                fill={i < (initialData[index]?.stars || 0) ? "#D4AF37" : "rgba(255,255,255,0.2)"}
+                fill={i < (commentaries[index]?.stars || 0) ? "#D4AF37" : "rgba(255,255,255,0.2)"}
                 className="w-5 h-5"
               >
                 <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z" />
@@ -58,13 +57,13 @@ export default function ComentariesCarousel({ initialData = [] }: Props) {
             ))}
           </div>
 
-          <blockquote className="text-xl md:text-2xl text-white font-light italic mb-8 leading-relaxed drop-shadow-md">
-            &quot;{initialData[index]?.commentary}&quot;
+          <blockquote className="text-base md:text-lg text-white font-light italic mb-8 leading-relaxed drop-shadow-md">
+            &quot;{commentaries[index]?.commentary}&quot;
           </blockquote>
 
           <cite className="not-italic">
             <span className="block text-sm uppercase tracking-[0.3em] font-bold text-gray-200">
-              {initialData[index]?.name}
+              {commentaries[index]?.name}
             </span>
           </cite>
         </div>
@@ -77,16 +76,15 @@ export default function ComentariesCarousel({ initialData = [] }: Props) {
           </button>
 
           <div className="flex gap-3">
-            {initialData.map((_: Commentary, i: number) => (
+            {commentaries.map((_: Commentary, i: number) => (
               <button
                 key={i}
                 onClick={() => {
                   setFade(false);
                   setTimeout(() => { setIndex(i); setFade(true); }, 300);
                 }}
-                className={`h-1 transition-all duration-500 ${
-                  i === index ? 'w-8 bg-white' : 'w-2 bg-white/30'
-                }`}
+                className={`h-1 transition-all duration-500 ${i === index ? 'w-8 bg-white' : 'w-2 bg-white/30'
+                  }`}
               />
             ))}
           </div>
