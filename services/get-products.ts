@@ -1,42 +1,39 @@
 import { getStrapiData } from "@/lib/strapi";
+import type { Product } from "@/types/product";
 
-interface StrapiImage {
-  id: number;
-  documentId: string;
-  url: string;
+type StrapiMeta = {
+  pagination: {
+    page: number,
+    pageSize: number,
+    pageCount: number,
+    total: number
+  }
 }
 
-interface StrapiCategory {
-  id: number;
-  documentId: string;
-  name: string;
-}
+export async function getProducts(params?: { category?: string, maxPrice?: string, page?: string }) {
+  const pageSize = 9;
+  const currentPage = Number(params?.page) || 1;
 
-interface Product {
-  id: number,
-  name: string,
-  images: StrapiImage[],
-  description: string,
-  price: number,
-  stock: number,
-  slug: string,
-  product_category: StrapiCategory
-}
-
-export async function getProducts(params?: { category?: string, maxPrice?: string }): Promise<Product[]> {
   let query = "products?populate[images][fields][0]=url&populate[product_category][fields][0]=name";
+  query += `&pagination[page]=${currentPage}&pagination[pageSize]=${pageSize}`;
+
   if (params?.category) {
-    query += `&filters[product_category][name][$eq]=${params.category}`;
+    const categories = params.category.split(",");
+
+    categories.forEach((catName, index) => {
+      query += `&filters[product_category][name][$in][${index}]=${encodeURIComponent(catName)}`;
+    });
   }
 
   if (params?.maxPrice) {
     query += `&filters[price][$lte]=${params.maxPrice}`;
   }
+
   const response = await getStrapiData(query);
 
-  if (!response?.data) return [];
+  if (!response?.data) return { data: [], meta: null };
 
-  return response.data.map((item: Product) => ({
+  const data = response.data.map((item: Product) => ({
     id: item.id,
     name: item.name,
     images: item.images,
@@ -46,4 +43,6 @@ export async function getProducts(params?: { category?: string, maxPrice?: strin
     slug: item.slug,
     product_category: item.product_category
   }));
+
+  return { data, meta: response.meta as StrapiMeta };
 }
