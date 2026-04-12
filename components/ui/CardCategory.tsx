@@ -8,10 +8,10 @@ interface CardCategoryProps {
   slug: string;
 }
 
-export default function CardCategory({name, image, description, slug} : CardCategoryProps){
-  return(
+export default function CardCategory({ name, image, description, slug }: CardCategoryProps) {
+  return (
     <Link href={`/joyas/${slug}`} className="group block text-center">
-      <div className="relative aspect-square overflow-hidden bg-gray-100 rounded-sm mb-4">
+      <div className="relative aspect-square overflow-hidden bg-gray-100 rounded-lg mb-4">
         <Image
           src={image}
           alt={description || name}
