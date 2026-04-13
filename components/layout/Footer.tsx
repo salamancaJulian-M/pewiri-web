@@ -5,7 +5,7 @@ import { InstagramIcon } from '@/public/icons/InstagramIcon'
 
 export default async function Footer() {
   const currentYear = new Date().getFullYear();
-  const { number, message } = await getContact();
+  const { number, message, instagram } = await getContact();
 
   const formatMessage = (message: string) => {
     return message.replaceAll(" ", "%20");
@@ -22,7 +22,7 @@ export default async function Footer() {
           </p>
 
           <div className="flex gap-6">
-            <a href="https://www.instagram.com/pewiriemeralds/" target='_blank' className="hover:text-green-600 transition-colors transition-transform hover:scale-[1.2] duration-500">
+            <a href={`${instagram}`} target='_blank' className="hover:text-green-600 transition-colors transition-transform hover:scale-[1.2] duration-500">
               <span className="sr-only">Instagram</span>
               <InstagramIcon className="w-6 h-6" />
             </a>
