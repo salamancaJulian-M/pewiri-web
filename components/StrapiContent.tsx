@@ -1,6 +1,8 @@
 "use client";
 
 import { BlocksRenderer, type BlocksContent } from "@strapi/blocks-react-renderer";
+import Image from 'next/image';
+import { STRAPI_HOST } from "@/lib/config";
 
 export default function StrapiContent({ content }: { content: BlocksContent }) {
   return (
@@ -19,15 +21,22 @@ export default function StrapiContent({ content }: { content: BlocksContent }) {
               return <h4 className="font-bold text-green-900 mb-2">{children}</h4>;
           }
         },
-        image: ({ image }) => (
-          <div className="my-12 w-full">
-            <img
-              src={image.url}
-              alt={image.alternativeText || "Joyas Pewiri"}
-              className="w-full aspect-[16/7] md:aspect-[21/9] shadow-sm object-cover object-center rounded-lg transition-transform hover:scale-[1.01] duration-500"
-            />
-          </div>
-        ),
+        image: ({ image }) => {
+          const fullUrl = image.url.startsWith("http")
+            ? image.url
+            : `${STRAPI_HOST}${image.url}`;
+          return (
+            <div className="relative my-12 w-full aspect-[16/7] md:aspect-[21/9] overflow-hidden rounded-lg">
+              <Image
+                src={fullUrl}
+                alt={image.alternativeText || "Joyas Pewiri"}
+                fill
+                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 80vw, 1200px"
+                className="object-cover transition-transform hover:scale-[1.01] duration-500"
+              />
+            </div>
+          )
+        },
         list: ({ children, format }) => {
           const className = "pl-8 my-6 space-y-3 text-base";
           return format === "ordered"

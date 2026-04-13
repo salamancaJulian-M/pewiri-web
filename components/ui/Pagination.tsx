@@ -89,8 +89,8 @@ export default function Pagination({ currentPage, pageCount }: { currentPage: nu
       {/* Info inferior ajustable a móvil */}
       <div className="flex flex-col items-center gap-2">
         <span className="h-[1px] w-12 bg-emerald-700"></span>
-        <p className="text-[8px] md:text-[9px] uppercase tracking-[0.2em] md:tracking-[0.3em] text-gray-400">
-          Explorando <span className="text-gray-900 font-bold">{currentPage}</span> / {pageCount}
+        <p className="text-[8px] md:text-[9px] uppercase tracking-[0.2em] md:tracking-[0.3em] text-green-400">
+          Explorando <span className="text-green-600 font-bold">{currentPage}</span> / {pageCount}
         </p>
       </div>
     </div>
