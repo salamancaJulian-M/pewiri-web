@@ -1,8 +1,12 @@
 import { getCustom } from "@/services/get-custom";
 import StrapiContent from "@/components/StrapiContent";
+import BtnWhatsApp from "@/components/ui/BtnWhatsApp";
+import BtnInstagram from "@/components/ui/BtnInstragram";
+import { getContact } from "@/services/get-contact";
 
 export default async function Custom() {
   const data = await getCustom();
+  const contact = await getContact();
 
   if (!data) return <p className="text-center py-20">Cargando información...</p>;
 
@@ -16,7 +20,7 @@ export default async function Custom() {
       <div
         id="hero"
         className={`${style.cover} mb-10`}
-        style={{ backgroundImage: `url(${data.cover})` }}
+        style={{ backgroundImage: `url(${data.cover}` }}
       >
         <div className="absolute inset-0 bg-black/50 z-1"></div>
         <div className="text-center px-4 z-10">
@@ -30,6 +34,11 @@ export default async function Custom() {
         <article className={style.textContainer}>
           <StrapiContent content={data.text} />
         </article>
+      </div>
+
+      <div className="flex flex-col md:flex-row items-center justify-center gap-4">
+        <BtnWhatsApp number={contact.number} text={contact.message} />
+        <BtnInstagram text={contact.instagram} />
       </div>
 
       <div className="space-y-4 p-10 bg-white">

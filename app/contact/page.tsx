@@ -3,6 +3,7 @@ import { faq } from "@/types/faq";
 import BtnWhatsApp from "@/components/ui/BtnWhatsApp";
 import { InstagramIcon } from "@/public/icons/InstagramIcon";
 import { getContact } from "@/services/get-contact";
+import BtnInstagram from "@/components/ui/BtnInstragram";
 
 export default async function Contact() {
   const dataFAQ = await getFAQ();
@@ -42,16 +43,8 @@ export default async function Contact() {
           </div>
 
           <BtnWhatsApp number={number} text={text} />
+          <BtnInstagram text={dataContact.instagram} />
 
-          <a
-            href="https://instagram.com/tu_usuario"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="group flex items-center justify-center gap-3 bg-white border-2 border-gray-200 text-gray-900 hover:border-emerald-700 hover:text-emerald-900 px-8 h-[72px] rounded-xl font-medium transition-all duration-300 w-full md:w-auto active:scale-95 shadow-sm"
-          >
-            <InstagramIcon className="w-5 h-5 transition-transform duration-400 group-hover:scale-110" />
-            <span>Instagram</span>
-          </a>
         </div>
       </div>
 
