@@ -42,7 +42,7 @@ export default function FilterCategory({ categories, selectedCategory, selectedM
 
   return (
     <div className="mb-10">
-      <h3 className="font-semibold mb-4 text-sm uppercase tracking-wider text-gray-400">
+      <h3 className="font-semibold mb-4 text-sm uppercase tracking-wider text-green-400">
         Categorías
       </h3>
       <div className="flex flex-col gap-3">
@@ -59,10 +59,10 @@ export default function FilterCategory({ categories, selectedCategory, selectedM
                   type="checkbox"
                   checked={isChecked}
                   onChange={() => handleCheckboxChange(cat.name)}
-                  className="peer h-5 w-5 cursor-pointer appearance-none rounded border border-gray-300 checked:bg-emerald-600 checked:border-emerald-600 transition-all"
+                  className="peer h-5 w-5 cursor-pointer appearance-none rounded border border-green-300 checked:bg-green-600 checked:border-green-600 transition-all"
                 />
                 <svg
-                  className="absolute h-3.5 w-3.5 text-white opacity-0 peer-checked:opacity-100 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 pointer-events-none"
+                  className="absolute h-3.5 w-3.5 text-green-200 opacity-0 peer-checked:opacity-100 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 pointer-events-none"
                   xmlns="http://www.w3.org/2000/svg"
                   viewBox="0 0 24 24"
                   fill="none"
@@ -74,7 +74,7 @@ export default function FilterCategory({ categories, selectedCategory, selectedM
                   <polyline points="20 6 9 17 4 12"></polyline>
                 </svg>
               </div>
-              <span className={`text-sm transition-colors ${isChecked ? 'text-emerald-700 font-medium' : 'text-gray-600 group-hover:text-gray-900'
+              <span className={`text-sm transition-colors ${isChecked ? 'text-green-700 font-medium' : 'text-green-400 group-hover:text-green-900'
                 }`}>
                 {cat.name}
               </span>

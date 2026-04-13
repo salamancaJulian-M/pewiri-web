@@ -13,7 +13,7 @@ export default async function AsideFilter({ searchParams }: Props) {
   return (
     <aside className="w-full md:w-64 mb-10 md:mb-0">
       <div className="sticky top-28">
-        <h2 className="text-2xl font-bold mb-8 text-gray-900">Filtros</h2>
+        <h2 className="text-2xl font-bold mb-8 text-green-600">Filtros</h2>
         <FilterCategory
           categories={categories}
           selectedCategory={searchParams.category}
@@ -23,7 +23,7 @@ export default async function AsideFilter({ searchParams }: Props) {
         {(searchParams.category || searchParams.maxPrice) && (
           <Link
             href="/catalog"
-            className="block w-full mt-10 py-3 text-center text-xs font-bold uppercase tracking-widest text-gray-400 hover:text-gray-900 border-t border-gray-100 hover:border-gray-300 transition-all"
+            className="block w-full mt-10 py-3 text-center text-xs font-bold uppercase tracking-widest text-green-300 hover:text-gree-600 border-t border-green-200 hover:border-green-400 hover:text-green-400 transition-all"
           >
             × Quitar filtros
           </Link>

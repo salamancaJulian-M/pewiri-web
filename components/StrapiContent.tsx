@@ -14,9 +14,9 @@ export default function StrapiContent({ content }: { content: BlocksContent }) {
             case 2:
               return <h2 className="text-3xl font-light mt-12 mb-6">{children}</h2>;
             case 3:
-              return <h3 className="text-xl font-light uppercase tracking-[0.25em] text-gray-500 mb-4">{children}</h3>;
+              return <h3 className="text-xl font-light uppercase tracking-[0.25em] text-green-600 mb-4">{children}</h3>;
             default:
-              return <h4 className="font-bold text-gray-900 mb-2">{children}</h4>;
+              return <h4 className="font-bold text-green-900 mb-2">{children}</h4>;
           }
         },
         image: ({ image }) => (
@@ -24,7 +24,7 @@ export default function StrapiContent({ content }: { content: BlocksContent }) {
             <img
               src={image.url}
               alt={image.alternativeText || "Joyas Pewiri"}
-              className="w-full aspect-[16/7] md:aspect-[21/9] shadow-sm object-cover object-center transition-transform hover:scale-[1.01] duration-500"
+              className="w-full aspect-[16/7] md:aspect-[21/9] shadow-sm object-cover object-center rounded-lg transition-transform hover:scale-[1.01] duration-500"
             />
           </div>
         ),

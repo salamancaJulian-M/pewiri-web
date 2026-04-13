@@ -28,10 +28,11 @@ export default function Navbar() {
   ];
 
   const navbarBg = isScrolled || !isHomePage
-    ? 'bg-white/90 backdrop-blur-md py-2 shadow-sm'
+    ? 'bg-green-200/80 backdrop-blur-md py-2 shadow-sm'
     : 'bg-transparent py-3';
 
-  const textColor = isScrolled || !isHomePage ? 'text-gray-800' : 'text-white';
+  const textColor = isScrolled || !isHomePage ? 'text-green-400' : 'text-green-200';
+  const hoverColor = isScrolled || !isHomePage ? 'hover:text-green-900' : 'hover:text-green-300';
 
   return (
     <nav className={`fixed w-full z-50 text-sm transition-all duration-300 ${navbarBg}`}>
@@ -54,9 +55,9 @@ export default function Navbar() {
             <Link
               key={link.name}
               href={link.href}
-              className={`uppercase tracking-[0.2em] transition-colors ${pathname === link.href
-                ? 'text-emerald-700 font-bold'
-                : `${textColor} hover:text-emerald-700`
+              className={`uppercase tracking-[0.2em] transition-colors duration-300 ${pathname === link.href
+                ? (isScrolled || !isHomePage ? 'text-green-800 font-bold' : 'text-green-200 font-bold')
+                : `${textColor} ${hoverColor}`
                 }`}
             >
               {link.name}
@@ -65,9 +66,9 @@ export default function Navbar() {
 
           <Link
             href="/contact"
-            className={`border px-6 py-2 uppercase tracking-widest transition-all hover:bg-black hover:text-white ${isScrolled || !isHomePage
-              ? 'border-black text-gray-800'
-              : 'border-white text-white'
+            className={`border px-6 py-2 uppercase tracking-widest transition-all ${isScrolled || !isHomePage
+              ? 'border-green-800 text-green-800 hover:bg-green-800 hover:text-green-200'
+              : 'border-green-300 text-green-300 hover:bg-green-200 hover:text-green-800'
               }`}
           >
             Contacto

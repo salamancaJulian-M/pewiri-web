@@ -26,8 +26,8 @@ export default function FilterPrice() {
 
   return (
     <div className="mt-6">
-      <h3 className="font-semibold mb-3 text-sm text-gray-600">
-        Precio máximo: <span className="text-emerald-700">${Number(price).toLocaleString()}</span>
+      <h3 className="font-semibold mb-3 text-sm text-green-400">
+        Precio máximo: <span className="text-green-400">${Number(price).toLocaleString()}</span>
       </h3>
       <input
         type="range"
@@ -36,9 +36,9 @@ export default function FilterPrice() {
         step="100"
         value={price}
         onChange={handleChange}
-        className="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer accent-emerald-700"
+        className="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer accent-green-700"
       />
-      <div className="flex justify-between text-[10px] text-gray-400 mt-2">
+      <div className="flex justify-between text-[10px] text-green-400 mt-2">
         <span>$1,000</span>
         <span>${Number(defaultPrice).toLocaleString()}</span>
       </div>
