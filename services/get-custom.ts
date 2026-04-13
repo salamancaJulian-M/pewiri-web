@@ -1,4 +1,3 @@
-import { STRAPI_HOST } from "@/lib/config";
 import { getStrapiData } from "@/lib/strapi";
 
 export async function getCustom() {
@@ -9,7 +8,7 @@ export async function getCustom() {
   return {
     title: raw.title,
     coverText: raw.coverText,
-    cover: raw.cover?.url ? `${STRAPI_HOST}${raw.cover.url}` : null,
+    cover: `/api-media/${raw.cover.url}`,
     text: raw.text
   }
 }
