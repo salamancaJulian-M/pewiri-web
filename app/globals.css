@@ -2,7 +2,6 @@
 @plugin "@tailwindcss/typography";
 
 @theme {
-  /* Definimos los colores de marca */
   --color-emerald-700: #15803d;
   --color-emerald-800: #166534;
   --color-gold-500: #D4AF37;
@@ -24,6 +23,7 @@
 :root {
   --background: var(--color-green-100);
   --foreground: var(--color-green-600);
+  --swiper-navigation-color: var(--color-green-600);
 }
 
 body {
@@ -32,3 +32,4 @@ body {
   font-family: var(--font-merriweather) !important;
   -webkit-font-smoothing: antialiased;
 }
+
