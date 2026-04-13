@@ -12,7 +12,7 @@ export default async function AsideFilter({ searchParams }: Props) {
 
   return (
     <aside className="w-full md:w-64 mb-10 md:mb-0">
-      <div className="sticky top-28">
+      <div className="sticky top-50">
         <h2 className="text-2xl font-bold mb-8 text-green-600">Filtros</h2>
         <FilterCategory
           categories={categories}
