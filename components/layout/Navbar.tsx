@@ -7,6 +7,7 @@ import { usePathname } from 'next/navigation';
 
 export default function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
+  const [isOpen, setIsOpen] = useState(false);
   const pathname = usePathname();
 
   const isHomePage = pathname === '/';
@@ -20,6 +21,18 @@ export default function Navbar() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  useEffect(() => {
+    if (isOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'unset';
+    }
+  }, [isOpen]);
+
+  useEffect(() => {
+    setIsOpen(false);
+  }, [pathname]);
+
   const navLinks = [
     { name: 'Inicio', href: '/' },
     { name: 'Catalogo', href: '/catalog' },
@@ -27,36 +40,41 @@ export default function Navbar() {
     { name: 'Nosotros', href: '/aboutUs' },
   ];
 
-  const navbarBg = isScrolled || !isHomePage
-    ? 'bg-green-200/80 backdrop-blur-md py-2 shadow-sm'
-    : 'bg-transparent py-3';
+  const isSolid = isScrolled || !isHomePage;
 
-  const textColor = isScrolled || !isHomePage ? 'text-green-400' : 'text-green-200';
-  const hoverColor = isScrolled || !isHomePage ? 'hover:text-green-900' : 'hover:text-green-300';
+  const navbarBg = isSolid
+    ? 'bg-green-100/95 backdrop-blur-md py-2 shadow-sm'
+    : 'bg-transparent py-4';
+
+  const textColor = isSolid ? 'text-green-800' : 'text-green-100';
+  const hoverColor = isSolid ? 'hover:text-emerald-700' : 'hover:text-green-300';
 
   return (
-    <nav className={`fixed w-full z-50 text-sm transition-all duration-300 ${navbarBg}`}>
+    <nav className={`fixed w-full z-50 transition-all duration-500 ${navbarBg}`}>
       <div className="max-w-7xl mx-auto px-6 flex justify-between items-center">
 
-        <Link href="/" className="relative transition-all duration-300">
+        <Link href="/" className="relative z-[101] flex items-center gap-3 group transition-all duration-30">
           <Image
             src="/LogoTransparente.png"
             alt="Pewiri Joyería Logo"
-            width={120}
+            width={isScrolled ? 80 : 100}
             height={50}
             className="object-contain"
             priority
           />
+          <span className={`text-lg md:text-xl font-serif tracking-[0.15em] uppercase transition-colors duration-300
+                          ${isSolid ? 'text-green-900' : 'text-green-50'}`}>
+            Pewiri Emeralds
+          </span>
         </Link>
 
-        {/* Desktop Menu */}
-        <div className="hidden md:flex items-center space-x-10">
+        <div className="hidden md:flex items-center space-x-10 text-sm">
           {navLinks.map((link) => (
             <Link
               key={link.name}
               href={link.href}
               className={`uppercase tracking-[0.2em] transition-colors duration-300 ${pathname === link.href
-                ? (isScrolled || !isHomePage ? 'text-green-800 font-bold' : 'text-green-200 font-bold')
+                ? 'text-emerald-800 font-bold'
                 : `${textColor} ${hoverColor}`
                 }`}
             >
@@ -66,10 +84,49 @@ export default function Navbar() {
 
           <Link
             href="/contact"
-            className={`border px-6 py-2 uppercase tracking-widest transition-all ${isScrolled || !isHomePage
-              ? 'border-green-800 text-green-800 hover:bg-green-800 hover:text-green-200'
-              : 'border-green-300 text-green-300 hover:bg-green-200 hover:text-green-800'
+            className={`border px-6 py-2 text-xs uppercase tracking-widest transition-all duration-300 ${isSolid
+              ? 'border-green-800 text-green-800 hover:bg-green-800 hover:text-white'
+              : 'border-green-200 text-green-100 hover:bg-green-100 hover:text-green-900'
               }`}
+          >
+            Contacto
+          </Link>
+        </div>
+
+        <button
+          className={`md:hidden z-[101] p-2 transition-colors ${isOpen ? 'text-green-900' : textColor}`}
+          onClick={() => setIsOpen(!isOpen)}
+        >
+          {isOpen ? (
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-8 h-8">
+              <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
+            </svg>
+          ) : (
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-8 h-8">
+              <path strokeLinecap="round" strokeLinejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+            </svg>
+          )}
+        </button>
+
+        <div className={`
+          fixed inset-0 w-full h-screen bg-green-50 z-[100] flex flex-col items-center justify-center gap-10 transition-all duration-500 ease-in-out md:hidden
+          ${isOpen
+            ? 'translate-y-0 opacity-100'
+            : '-translate-y-full opacity-0 pointer-events-none'}
+        `}>
+          {navLinks.map((link) => (
+            <Link
+              key={link.name}
+              href={link.href}
+              className={`text-2xl uppercase tracking-[0.3em] ${pathname === link.href ? 'text-emerald-800 font-bold' : 'text-green-700'
+                }`}
+            >
+              {link.name}
+            </Link>
+          ))}
+          <Link
+            href="/contact"
+            className="mt-4 border border-green-800 px-12 py-3 uppercase tracking-widest text-green-800"
           >
             Contacto
           </Link>
@@ -77,4 +134,4 @@ export default function Navbar() {
       </div>
     </nav>
   );
-};
+}
