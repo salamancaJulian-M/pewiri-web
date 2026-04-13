@@ -5,12 +5,12 @@ import { getAboutUs } from "@/services/get-aboutUs";
 export default async function AcercaPage() {
   const data = await getAboutUs();
 
-  const style = "prose-lg prose-emerald max-w-none text-gray-700 font-light prose-headings:font-serif prose-headings:text-gray-900 prose-p:text-xl prose-p:leading-relaxed prose-strong:text-gray-900 prose-strong:font-bold";
+  const style = "prose-lg prose-emerald max-w-none text-green-400 font-light prose-headings:font-serif prose-headings:text-green-600 prose-p:text-xl prose-p:leading-relaxed prose-strong:text-green-600 prose-strong:font-bold";
 
   if (!data) return <p className="text-center py-20">Cargando información...</p>;
 
   return (
-    <main className="max-w-6xl mx-auto px-6 py-35 text-gray-900">
+    <main className="max-w-6xl mx-auto px-6 py-35 text-green-600">
       <h1 className="text-4xl md:text-5xl font-serif mb-4 italic">
         {data.title}
       </h1>

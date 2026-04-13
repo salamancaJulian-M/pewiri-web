@@ -7,12 +7,12 @@ export default async function Custom() {
   if (!data) return <p className="text-center py-20">Cargando información...</p>;
 
   const style = {
-    cover: "relative h-[45vh] flex flex-col items-center justify-center text-white bg-cover bg-center overflow-hidden",
-    textContainer: "prose prose-gray max-w-none text-gray-800 prose-p:leading-snug prose-strong:text-gray-900"
+    cover: "relative h-[45vh] flex flex-col items-center justify-center text-green-200 bg-cover bg-center rounded-lg overflow-hidden",
+    textContainer: "prose prose-gray max-w-none text-green-400 prose-p:leading-snug prose-headings:text-green-600 prose-strong:text-green-600"
   };
 
   return (
-    <main className="max-w-5xl mx-auto px-6 py-35 text-gray-900">
+    <main className="max-w-5xl mx-auto px-6 py-35">
       <div
         id="hero"
         className={`${style.cover} mb-10`}

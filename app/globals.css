@@ -7,13 +7,23 @@
   --color-emerald-800: #166534;
   --color-gold-500: #D4AF37;
 
+  --color-green-100: #EDF8EE;
+  --color-green-200: #DAF1DE;
+  --color-green-300: #8EB69B;
+  --color-green-400: #2B6556;
+  --color-green-600: #235347;
+  --color-green-700: #163832;
+  --color-green-800: #0B2B26;
+  --color-green-900: #051F20;
+
+
   --font-stolen: var(--font-stolenLove);
   --font-merriweather: var(--font-merriweather), serif;
 }
 
 :root {
-  --background: #ffffff;
-  --foreground: #111827;
+  --background: var(--color-green-100);
+  --foreground: var(--color-green-600);
 }
 
 body {
