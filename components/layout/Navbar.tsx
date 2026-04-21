@@ -46,8 +46,8 @@ export default function Navbar() {
     ? 'bg-green-100/95 backdrop-blur-md py-2 shadow-sm'
     : 'bg-transparent py-4';
 
-  const textColor = isSolid ? 'text-green-800' : 'text-green-100';
-  const hoverColor = isSolid ? 'hover:text-emerald-700' : 'hover:text-green-300';
+  const textColor = isSolid ? 'text-green-400' : 'text-green-100';
+  const hoverColor = isSolid ? 'hover:text-green-900' : 'hover:text-green-300';
 
   return (
     <nav className={`fixed w-full z-50 transition-all duration-500 ${navbarBg}`}>
@@ -57,9 +57,9 @@ export default function Navbar() {
           <Image
             src="/LogoTransparente.png"
             alt="Pewiri Joyería Logo"
-            width={isScrolled ? 80 : 100}
+            width={isScrolled ? 60 : 80}
             height={50}
-            className="object-contain"
+            className="object-contain md:w-[100px]"
             priority
           />
           <span className={`text-lg md:text-xl font-serif tracking-[0.15em] uppercase transition-colors duration-300
@@ -74,7 +74,7 @@ export default function Navbar() {
               key={link.name}
               href={link.href}
               className={`uppercase tracking-[0.2em] transition-colors duration-300 ${pathname === link.href
-                ? 'text-emerald-800 font-bold'
+                ? 'text-green-400 font-bold'
                 : `${textColor} ${hoverColor}`
                 }`}
             >
@@ -118,7 +118,7 @@ export default function Navbar() {
             <Link
               key={link.name}
               href={link.href}
-              className={`text-2xl uppercase tracking-[0.3em] ${pathname === link.href ? 'text-emerald-800 font-bold' : 'text-green-700'
+              className={`text-2xl uppercase tracking-[0.3em] ${pathname === link.href ? 'text-green-300 font-bold' : 'text-green-700'
                 }`}
             >
               {link.name}
