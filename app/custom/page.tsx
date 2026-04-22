@@ -1,5 +1,5 @@
 import { getCustom } from "@/services/get-custom";
-import StrapiContent from "@/components/StrapiContent";
+import StrapiContent from "@/components/ui/StrapiContent";
 import BtnWhatsApp from "@/components/ui/BtnWhatsApp";
 import BtnInstagram from "@/components/ui/BtnInstragram";
 import { getContact } from "@/services/get-contact";
@@ -12,23 +12,11 @@ export default async function Custom() {
 
   const style = {
     cover: "relative h-[45vh] flex flex-col items-center justify-center text-green-200 bg-cover bg-center rounded-lg overflow-hidden",
-    textContainer: "prose prose-gray max-w-none text-green-400 prose-p:leading-snug prose-headings:text-green-600 prose-strong:text-green-600"
+    textContainer: "prose prose-gray max-w-none text-green-400 prose-p:leading-snug prose-strong:text-green-600"
   };
 
   return (
     <main className="max-w-5xl mx-auto px-6 py-35">
-      <div
-        id="hero"
-        className={`${style.cover} mb-10`}
-        style={{ backgroundImage: `url(${data.cover}` }}
-      >
-        <div className="absolute inset-0 bg-black/50 z-1"></div>
-        <div className="text-center px-4 z-10">
-          <h1 className="text-3xl md:text-5xl mb-4 tracking-[0.25em] uppercase font-light drop-shadow-md">
-            {data.coverText}
-          </h1>
-        </div>
-      </div>
 
       <div className="max-w-3xl mx-auto">
         <article className={style.textContainer}>
@@ -39,14 +27,6 @@ export default async function Custom() {
       <div className="flex flex-col md:flex-row items-center justify-center gap-4">
         <BtnWhatsApp number={contact.number} text={contact.message} />
         <BtnInstagram text={contact.instagram} />
-      </div>
-
-      <div className="space-y-4 p-10 bg-white">
-        <p className="font-stolen font-light text-3xl text-black">Peso 300 - Light (Joyas)</p>
-        <p className="font-stolen font-normal text-3xl text-black">Peso 400 - Normal</p>
-        <p className="font-stolen font-bold text-3xl text-black">Peso 700 - Bold</p>
-        <p className="font-stolen font-extrabold text-3xl text-black">Peso 800 - ExtraBold</p>
-        <p className="font-stolen font-black text-3xl text-black">Peso 900 - Black (Máximo)</p>
       </div>
     </main>
   );
