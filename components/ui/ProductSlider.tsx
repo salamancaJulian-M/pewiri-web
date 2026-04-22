@@ -30,13 +30,13 @@ export default function ProductSlider({ images, alt }: Props) {
       >
         {images.map((img, index) => (
           <SwiperSlide key={index}>
-            <div className="relative w-full h-full bg-stone-50">
+            <div className="relative w-full h-full p-4">
               <Image
                 src={img}
                 alt={`${alt} - vista ${index + 1}`}
                 fill
                 sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 600px"
-                className="object-cover"
+                className="object-cover object-left-top"
                 priority={index === 0}
               />
             </div>
