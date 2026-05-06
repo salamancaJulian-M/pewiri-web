@@ -10,7 +10,7 @@ export default function CardProduct({ item }: { item: Product }) {
 
   return (
     <Link
-      href={`/product/${item.slug}`} // Asegúrate de que esta ruta coincida con tu estructura
+      href={`/product/${item.slug}`}
       className="group flex flex-col w-full outline-none"
     >
       <div className="relative aspect-square overflow-hidden bg-green-200 rounded-lg shadow-sm ring-1 ring-green-200/50">
@@ -23,14 +23,12 @@ export default function CardProduct({ item }: { item: Product }) {
           priority={false}
         />
 
-        {/* Etiqueta de Categoría */}
         <div className="absolute top-3 left-3">
           <span className="bg-green-200/90 backdrop-blur-md px-2 py-1 text-[10px] font-bold uppercase tracking-widest text-green-600 rounded shadow-sm">
             {item.product_category?.name || "Nuevo"}
           </span>
         </div>
 
-        {/* Overlay con "Botón" (ahora es un div visual) */}
         <div className="absolute inset-0 bg-black/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4">
           <div className="w-full bg-green-200/90 backdrop-blur py-2 text-xs text-center font-semibold text-green-600 rounded-md shadow-lg transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
             Más Información
@@ -46,7 +44,7 @@ export default function CardProduct({ item }: { item: Product }) {
 
         <div className="flex items-center gap-2">
           <span className="text-base text-green-400 group-hover:text-green-700 transition-colors">
-            ${item.price.toLocaleString()}
+            ${Number(item.price).toLocaleString("es-CO")}
           </span>
         </div>
       </div>
