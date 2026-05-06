@@ -20,8 +20,8 @@ export async function getProducts(params?: { category?: string, maxPrice?: strin
   if (params?.category) {
     const categories = params.category.split(",");
 
-    categories.forEach((catName, index) => {
-      query += `&filters[product_category][name][$in][${index}]=${encodeURIComponent(catName)}`;
+    categories.forEach((catSlug, index) => {
+      query += `&filters[product_category][slug][$in][${index}]=${encodeURIComponent(catSlug)}`;
     });
   }
 
