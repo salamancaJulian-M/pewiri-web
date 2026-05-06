@@ -27,7 +27,7 @@ export default async function ProductDetail({ product }: ProductProps) {
             <h1 className="text-4xl md:text-5xl font-stolen text-green-900 leading-tight">
               {product.name}
             </h1>
-            <p className="text-2xl font-merriweather text-green-700 font-semibold">
+            <p className="text-2xl text-green-700 font-semibold">
               {product.price}
             </p>
           </header>
@@ -38,7 +38,7 @@ export default async function ProductDetail({ product }: ProductProps) {
             <h3 className="uppercase tracking-widest text-sm font-bold text-green-400">
               Descripción
             </h3>
-            <p className="text-green-800 font-merriweather leading-relaxed">
+            <p className="text-green-800 leading-relaxed">
               {product.description}
             </p>
           </div>
