@@ -18,12 +18,10 @@ export default async function ProductDetail({ product }: ProductProps) {
     <section className="max-w-7xl mx-auto px-4 py-12 md:py-20">
       <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-start">
 
-        {/* --- SECCIÓN DE IMAGEN --- */}
         <div className='w-full'>
           <ProductSlider images={product.images} alt={product.name} />
         </div>
 
-        {/* --- SECCIÓN DE INFORMACIÓN --- */}
         <div className="flex flex-col space-y-6">
           <header className="space-y-2">
             <h1 className="text-4xl md:text-5xl font-stolen text-green-900 leading-tight">
@@ -45,7 +43,6 @@ export default async function ProductDetail({ product }: ProductProps) {
             </p>
           </div>
 
-          {/* --- BOTONES DE ACCIÓN --- */}
           <div className="flex flex-col sm:flex-row gap-4 pt-6">
             <BtnWhatsApp
               number={contactData.number}
