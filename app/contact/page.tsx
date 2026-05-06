@@ -32,7 +32,7 @@ export default async function Contact() {
     <section className="max-w-6xl mx-auto p-6 py-35">
       <div className="text-center mb-24">
         <h2 className="text-4xl font-bold mb-4 text-green-600 tracking-tight">Contacta con nosotros</h2>
-        <p className="text-gray-500 text-lg mb-12">Estamos a tu disposición para cualquier consulta.</p>
+        <p className="text-green-400 text-lg mb-12">Estamos a tu disposición para cualquier consulta.</p>
 
         <div className="flex flex-col md:flex-row items-center justify-center gap-4">
           <div className="flex flex-col items-center justify-center h-[72px] px-8 bg-green-200 border border-green-200 rounded-xl w-full md:w-auto">
