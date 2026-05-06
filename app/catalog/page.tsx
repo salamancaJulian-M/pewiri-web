@@ -1,7 +1,7 @@
 import { getProducts } from "@/services/get-products";
 import CardProduct from "@/components/ui/CardProduct";
 import AsideFilter from "@/components/layout/AsideFilter";
-import Pagination from "@/components/ui/Pagination";
+import Pagination from "@/components/layout/Pagination";
 
 type Props = {
   searchParams: Promise<{ category?: string; maxPrice?: string }>;
