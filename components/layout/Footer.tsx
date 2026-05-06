@@ -14,7 +14,7 @@ export default async function Footer() {
   const text = formatMessage(message);
 
   return (
-    <footer className="text-green-900 border-t border-white/5">
+    <footer className="text-green-900 border-t border-white/5 print:hidden">
       <div className="max-w-7xl mx-auto px-6 py-5">
         <div className="m-5 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-6">
           <p className="uppercase tracking-widest">

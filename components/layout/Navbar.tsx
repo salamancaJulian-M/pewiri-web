@@ -38,6 +38,7 @@ export default function Navbar() {
     { name: 'Catalogo', href: '/catalog' },
     { name: 'A Medida', href: '/custom' },
     { name: 'Nosotros', href: '/aboutUs' },
+    { name: 'Certificado', href: '/certificate' },
   ];
 
   const isSolid = isScrolled || !isHomePage;
@@ -50,7 +51,7 @@ export default function Navbar() {
   const hoverColor = isSolid ? 'hover:text-green-900' : 'hover:text-green-300';
 
   return (
-    <nav className={`fixed w-full z-50 transition-all duration-500 ${navbarBg}`}>
+    <nav className={`fixed w-full z-50 transition-all duration-500 ${navbarBg} print:hidden`}>
       <div className="max-w-7xl mx-auto px-6 flex justify-between items-center">
 
         <Link href="/" className="relative z-[101] flex items-center gap-3 group transition-all duration-30">
