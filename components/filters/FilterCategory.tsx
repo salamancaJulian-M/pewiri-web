@@ -1,10 +1,11 @@
 "use client";
 
-import { useRouter } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 
 interface Category {
   id: number | string;
   name: string;
+  slug: string;
 }
 
 interface Props {
@@ -15,22 +16,25 @@ interface Props {
 
 export default function FilterCategory({ categories, selectedCategory, selectedMaxPrice }: Props) {
   const router = useRouter();
+  const searchParams = useSearchParams();
 
   const selectedArray = selectedCategory ? selectedCategory.split(",") : [];
 
-  const handleCheckboxChange = (categoryName: string) => {
+  const handleCheckboxChange = (categorySlug: string) => {
     let newSelected: string[];
 
-    if (selectedArray.includes(categoryName)) {
-      newSelected = selectedArray.filter((c) => c !== categoryName);
+    if (selectedArray.includes(categorySlug)) {
+      newSelected = selectedArray.filter((c) => c !== categorySlug);
     } else {
-      newSelected = [...selectedArray, categoryName];
+      newSelected = [...selectedArray, categorySlug];
     }
 
-    const params = new URLSearchParams();
+    const params = new URLSearchParams(searchParams.toString());
 
     if (newSelected.length > 0) {
       params.set("category", newSelected.join(","));
+    } else {
+      params.delete("category")
     }
 
     if (selectedMaxPrice) {
@@ -47,7 +51,7 @@ export default function FilterCategory({ categories, selectedCategory, selectedM
       </h3>
       <div className="flex flex-col gap-3">
         {categories.map((cat) => {
-          const isChecked = selectedArray.includes(cat.name);
+          const isChecked = selectedArray.includes(cat.slug);
 
           return (
             <label
@@ -58,7 +62,7 @@ export default function FilterCategory({ categories, selectedCategory, selectedM
                 <input
                   type="checkbox"
                   checked={isChecked}
-                  onChange={() => handleCheckboxChange(cat.name)}
+                  onChange={() => handleCheckboxChange(cat.slug)}
                   className="peer h-5 w-5 cursor-pointer appearance-none rounded border border-green-300 checked:bg-green-600 checked:border-green-600 transition-all"
                 />
                 <svg
