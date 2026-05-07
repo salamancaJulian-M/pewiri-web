@@ -1,5 +1,5 @@
-import BtnInstagram from './BtnInstragram';
-import BtnWhatsApp from './BtnWhatsApp';
+import BtnInstagram from '../BtnInstragram';
+import BtnWhatsApp from '../BtnWhatsApp';
 import { getContact } from '@/services/get-contact';
 import ProductSlider from './ProductSlider';
 

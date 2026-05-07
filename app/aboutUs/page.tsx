@@ -1,7 +1,7 @@
 import Image from "next/image";
 import { getAboutUs } from "@/services/get-aboutUs";
-import AboutContent from "@/components/ui/AboutContent";
-import SectionAbout from "@/components/ui/SectionAbout";
+import AboutContent from "@/components/ui/aboutUs/AboutContent";
+import SectionAbout from "@/components/ui/aboutUs/SectionAbout";
 
 export default async function AcercaPage() {
   const data = await getAboutUs();
@@ -15,13 +15,10 @@ export default async function AcercaPage() {
       </h1>
       <div className="h-px w-24 bg-emerald-700 mb-16"></div>
 
-      {/* SECCIÓN 1: About Us + Image 1 */}
       <SectionAbout image={data.image1} content={data.textAboutUs} />
 
-      {/* SECCIÓN 2: History + Image 2 */}
       <SectionAbout image={data.image2} content={data.textHistory} />
 
-      {/* SECCIÓN EQUIPO */}
       {data.imageTeam && (
         <section className="mt-32 pt-20 border-t border-gray-100 flex flex-col items-center">
           <div className="relative w-full aspect-[4/3] md:aspect-[21/9] mb-12 overflow-hidden rounded-sm shadow-lg">

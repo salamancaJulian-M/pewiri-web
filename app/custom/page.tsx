@@ -1,5 +1,5 @@
 import { getCustom } from "@/services/get-custom";
-import StrapiContent from "@/components/ui/StrapiContent";
+import StrapiContent from "@/components/ui/custom/StrapiContent";
 import BtnWhatsApp from "@/components/ui/BtnWhatsApp";
 import BtnInstagram from "@/components/ui/BtnInstragram";
 import { getContact } from "@/services/get-contact";

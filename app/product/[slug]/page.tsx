@@ -1,6 +1,6 @@
 import { notFound } from "next/navigation";
 import getProduct from "@/services/get-product";
-import ProductDetail from "@/components/ui/ProductDetail";
+import ProductDetail from "@/components/ui/product/ProductDetail";
 import { STRAPI_HOST } from "@/lib/config";
 
 interface PageProps {
