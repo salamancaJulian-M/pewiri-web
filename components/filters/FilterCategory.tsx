@@ -1,12 +1,7 @@
 "use client";
 
 import { useRouter, useSearchParams } from "next/navigation";
-
-interface Category {
-  id: number | string;
-  name: string;
-  slug: string;
-}
+import type { Category } from "@/types/category";
 
 interface Props {
   categories: Category[];

@@ -3,7 +3,7 @@ export interface Category {
   name: string,
   description?: string,
   image: string,
-  slug?: string
+  slug: string
 }
 
 export interface StrapiCategory {

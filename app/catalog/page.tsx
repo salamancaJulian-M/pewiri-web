@@ -1,11 +1,12 @@
 import { getProducts } from "@/services/get-products";
-import CardProduct from "@/components/ui/CardProduct";
-import AsideFilter from "@/components/layout/AsideFilter";
-import Pagination from "@/components/layout/Pagination";
+import CardProduct from "@/components/ui/catalog/CardProduct";
+import AsideFilter from "@/components/ui/catalog/AsideFilter";
+import Pagination from "@/components/ui/catalog/Pagination";
 
-type Props = {
-  searchParams: Promise<{ category?: string; maxPrice?: string }>;
-};
+type Props =
+  {
+    searchParams: Promise<{ category?: string; maxPrice?: string }>;
+  };
 
 export default async function Catalog({ searchParams }: Props) {
   const currentParams = await searchParams;

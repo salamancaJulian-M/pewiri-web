@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import ArrowButton from "@/components/ui/ArrowButton";
+import ArrowButton from "../product/ArrowButton";
 import { useSearchParams } from "next/navigation";
 import { usePaginationRange, DOTS } from "@/hooks/usePaginationRange";
 

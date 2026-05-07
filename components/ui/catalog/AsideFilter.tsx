@@ -1,6 +1,6 @@
 import Link from "next/link";
-import FilterCategory from "../filters/FilterCategory";
-import FilterPrice from "../filters/FilterPrice";
+import FilterCategory from "@/components/filters/FilterCategory";
+import FilterPrice from "@/components/filters/FilterPrice";
 import { getCategories } from "@/services/get-categories";
 
 interface Props {
