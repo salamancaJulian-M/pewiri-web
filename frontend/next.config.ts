@@ -1,8 +1,9 @@
 import type { NextConfig } from "next";
 import { STRAPI_HOST } from "./lib/config";
 
+const host = STRAPI_HOST || "http://localhost:1337";
+
 const nextConfig: NextConfig = {
-  /* config options here */
   async rewrites() {
     return [
       {
@@ -14,22 +15,13 @@ const nextConfig: NextConfig = {
   images: {
     remotePatterns: [
       {
-        protocol: 'http',
-        hostname: 'localhost',
-        port: '1337',
+        protocol: host.startsWith('https') ? 'https' : 'http',
+        hostname: new URL(host).hostname,
+        port: new URL(host).port || '',
         pathname: '/uploads/**',
       },
     ],
-    dangerouslyAllowLocalIP: true,
   },
-  experimental: {
-    serverActions: {
-      allowedOrigins: [
-        'localhost:3000',
-        'c1z4hrjc-3000.use2.devtunnels.ms'
-      ]
-    }
-  }
 };
 
 export default nextConfig;
