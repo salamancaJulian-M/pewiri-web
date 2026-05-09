@@ -22,6 +22,14 @@ const nextConfig: NextConfig = {
     ],
     dangerouslyAllowLocalIP: true,
   },
+  experimental: {
+    serverActions: {
+      allowedOrigins: [
+        'localhost:3000',
+        'c1z4hrjc-3000.use2.devtunnels.ms'
+      ]
+    }
+  }
 };
 
 export default nextConfig;
