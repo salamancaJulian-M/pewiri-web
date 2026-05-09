@@ -1,0 +1,42 @@
+# --- General ---
+.DS_Store
+.env*
+*.log
+.tmp
+.cache/
+dist/
+build/
+
+# --- Dependencias (Busca en cualquier nivel) ---
+node_modules/
+.pnp
+.pnp.*
+.yarn/*
+!.yarn/patches
+!.yarn/plugins
+!.yarn/releases
+!.yarn/versions
+
+# --- Frontend (Next.js / React) ---
+.next/
+out/
+*.tsbuildinfo
+next-env.d.ts
+.vercel
+.eslintcache
+
+# --- Backend (Strapi / Node) ---
+.strapi/
+.strapi-updater.json
+.strapi-cloud.json
+exports/
+# Ignora archivos subidos pero mantén la carpeta con .gitkeep
+public/uploads/*
+!public/uploads/.gitkeep
+
+# --- IDEs & OS ---
+.idea/
+.vscode/
+*.swp
+*.swo
+Thumbs.db
