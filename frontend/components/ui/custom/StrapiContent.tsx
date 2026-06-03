@@ -16,29 +16,13 @@ const rendererComponents = {
   },
   image: ({ image }: any) => {
     let imageUrl = image.url;
-    if (imageUrl.startsWith("http://localhost:1337")) {
-      imageUrl = imageUrl.replace("http://localhost:1337", "");
-    }
-
-    if (!imageUrl.startsWith("http")) {
-      if (STRAPI_HOST && STRAPI_HOST.includes("strapiapp.com")) {
-        const cleanHost = STRAPI_HOST.replace("https://", "");
-        imageUrl = `https://${cleanHost.replace(".media.", "")}`.replace("strapiapp.com", "media.strapiapp.com");
-        imageUrl = `${imageUrl}${image.url.replace("http://localhost:1337", "")}`;
-      } else {
-        imageUrl = `${STRAPI_HOST}${imageUrl}`;
-      }
-    }
-    else if (imageUrl.startsWith("https://media.cheerful-idea-ebe87be11f.strapiapp.com")) {
-      imageUrl = imageUrl.replace(
-        "https://media.cheerful-idea-ebe87be11f.strapiapp.com",
-        "https://cheerful-idea-ebe87be11f.media.strapiapp.com"
-      );
-    }
+    const fileName = imageUrl.split('/').pop();
+    const mediaHost = STRAPI_HOST;
+    const fullUrl = `${mediaHost}/${fileName}`;
     return (
-      <div className="relative my-8 w-full aspect-[16/9] overflow-hidden rounded-lg">
-        <Image src={imageUrl} alt={image.alternativeText || "Pewiri"} fill className="object-cover rounded-lg" sizes="(max-width: 768px) 100vw, (max-width: 1200px) 80vw, 1200px" />
-      </div>
+      <div className="relative my-8 w-full aspect-[16/9] overflow-hidden rounded-lg" >
+        <Image src={fullUrl} alt={image.alternativeText || "Pewiri"} fill className="object-cover rounded-lg" sizes="(max-width: 768px) 100vw, (max-width: 1200px) 80vw, 1200px" />
+      </div >
     );
   },
   quote: ({ children }: any) => (
