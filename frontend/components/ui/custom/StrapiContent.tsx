@@ -21,15 +21,19 @@ const rendererComponents = {
     }
 
     if (!imageUrl.startsWith("http")) {
-      if (STRAPI_HOST && STRAPI_HOST.includes("strapiapp.com") && !STRAPI_HOST.includes(".media.")) {
-        const mediaHost = STRAPI_HOST.replace("https://", "https://media.");
-        imageUrl = `${mediaHost}${imageUrl}`;
+      if (STRAPI_HOST && STRAPI_HOST.includes("strapiapp.com")) {
+        const cleanHost = STRAPI_HOST.replace("https://", "");
+        imageUrl = `https://${cleanHost.replace(".media.", "")}`.replace("strapiapp.com", "media.strapiapp.com");
+        imageUrl = `${imageUrl}${image.url.replace("http://localhost:1337", "")}`;
       } else {
         imageUrl = `${STRAPI_HOST}${imageUrl}`;
       }
     }
-    else if (imageUrl.includes("strapiapp.com") && !imageUrl.includes(".media.")) {
-      imageUrl = imageUrl.replace("https://", "https://media.");
+    else if (imageUrl.startsWith("https://media.cheerful-idea-ebe87be11f.strapiapp.com")) {
+      imageUrl = imageUrl.replace(
+        "https://media.cheerful-idea-ebe87be11f.strapiapp.com",
+        "https://cheerful-idea-ebe87be11f.media.strapiapp.com"
+      );
     }
     return (
       <div className="relative my-8 w-full aspect-[16/9] overflow-hidden rounded-lg">
