@@ -1,5 +1,4 @@
 import type { Category, StrapiCategory } from "@/types/category";
-import { STRAPI_HOST } from "@/lib/config";
 import { getStrapiData } from "@/lib/strapi";
 
 export async function getCategories(): Promise<Category[]> {

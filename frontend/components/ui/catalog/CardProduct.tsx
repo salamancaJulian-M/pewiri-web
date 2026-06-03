@@ -1,6 +1,5 @@
 import Image from "next/image";
 import Link from "next/link";
-import { STRAPI_HOST } from "@/lib/config";
 import type { Product } from "@/types/product";
 
 export default function CardProduct({ item }: { item: Product }) {

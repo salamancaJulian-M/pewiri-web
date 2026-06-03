@@ -1,5 +1,4 @@
 import { getStrapiData } from "@/lib/strapi";
-import { STRAPI_HOST } from "@/lib/config";
 
 export async function getAboutUs() {
   const response = await getStrapiData("about-us?populate[Image1][fields][0]=url&populate[Image2][fields][0]=url&populate[ImageTeam][fields][0]=url");

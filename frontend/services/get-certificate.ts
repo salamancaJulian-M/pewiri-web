@@ -1,5 +1,4 @@
 'use server'
-import { STRAPI_HOST } from "@/lib/config";
 import { getStrapiData } from "@/lib/strapi";
 import { Certificate } from "@/types/certificate";
 
