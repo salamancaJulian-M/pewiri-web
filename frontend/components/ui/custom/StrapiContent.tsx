@@ -16,12 +16,22 @@ const rendererComponents = {
   },
   image: ({ image }: any) => {
     let imageUrl = image.url;
-    if (imageUrl.startsWith("http://localhost:1337") && STRAPI_HOST && STRAPI_HOST.includes("strapiapp.com")) {
-      imageUrl = imageUrl.replace("http://localhost:1337", STRAPI_HOST);
+    if (imageUrl.startsWith("http://localhost:1337")) {
+      imageUrl = imageUrl.replace("http://localhost:1337", "");
     }
-    else if (!imageUrl.startsWith("http")) {
-      imageUrl = `${STRAPI_HOST}${imageUrl}`;
-    } return (
+
+    if (!imageUrl.startsWith("http")) {
+      if (STRAPI_HOST && STRAPI_HOST.includes("strapiapp.com") && !STRAPI_HOST.includes(".media.")) {
+        const mediaHost = STRAPI_HOST.replace("https://", "https://media.");
+        imageUrl = `${mediaHost}${imageUrl}`;
+      } else {
+        imageUrl = `${STRAPI_HOST}${imageUrl}`;
+      }
+    }
+    else if (imageUrl.includes("strapiapp.com") && !imageUrl.includes(".media.")) {
+      imageUrl = imageUrl.replace("https://", "https://media.");
+    }
+    return (
       <div className="relative my-8 w-full aspect-[16/9] overflow-hidden rounded-lg">
         <Image src={imageUrl} alt={image.alternativeText || "Pewiri"} fill className="object-cover rounded-lg" sizes="(max-width: 768px) 100vw, (max-width: 1200px) 80vw, 1200px" />
       </div>
