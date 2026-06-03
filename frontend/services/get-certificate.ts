@@ -12,7 +12,7 @@ export async function getCertificate(code: string) {
     description: item.description,
     customer: item.customer,
     type: item.type,
-    images: item.images ? item.images.map((img: any) => `${STRAPI_HOST}${img.url}`) : []
+    images: item.images ? item.images.map((img: any) => `${img.url}`) : []
   }
 
   return certificate;

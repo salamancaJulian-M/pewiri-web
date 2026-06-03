@@ -7,7 +7,7 @@ export async function getCategories(): Promise<Category[]> {
   if (!response?.data) return [];
   return response.data.map((category: StrapiCategory) => {
     const { id, name, slug, description, image: rawImage } = category
-    const image = `${STRAPI_HOST}${rawImage.url}`
+    const image = `${rawImage.url}`
     return { id, name, slug, description, image }
   })
 }

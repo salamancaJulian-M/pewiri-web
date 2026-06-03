@@ -5,7 +5,7 @@ import type { Product } from "@/types/product";
 
 export default function CardProduct({ item }: { item: Product }) {
   const imageUrl = item.images?.[0]?.url
-    ? `${STRAPI_HOST}${item.images[0].url}`
+    ? `${item.images[0].url}`
     : "/placeholder.png";
 
   return (

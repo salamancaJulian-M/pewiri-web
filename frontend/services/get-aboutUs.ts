@@ -12,8 +12,8 @@ export async function getAboutUs() {
     textAboutUs: raw.TextAboutUs,
     textHistory: raw.History,
     textTeam: raw.TextTeam,
-    image1: raw.Image1?.url ? `${STRAPI_HOST}${raw.Image1.url}` : null,
-    image2: raw.Image2?.url ? `${STRAPI_HOST}${raw.Image2.url}` : null,
-    imageTeam: raw.ImageTeam?.url ? `${STRAPI_HOST}${raw.ImageTeam.url}` : null,
+    image1: raw.Image1?.url ? `${raw.Image1.url}` : null,
+    image2: raw.Image2?.url ? `${raw.Image2.url}` : null,
+    imageTeam: raw.ImageTeam?.url ? `${raw.ImageTeam.url}` : null,
   };
 };

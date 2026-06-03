@@ -19,7 +19,7 @@ export default async function ProductPage({ params }: PageProps) {
     name: product.name,
     description: product.description,
     price: `$ ${product.price.toLocaleString()}`,
-    images: product.images.map((img: any) => (`${STRAPI_HOST}${img.url}`)),
+    images: product.images.map((img: any) => (`${img.url}`)),
   };
 
   return (

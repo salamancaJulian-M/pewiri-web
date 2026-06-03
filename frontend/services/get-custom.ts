@@ -8,7 +8,7 @@ export async function getCustom() {
   return {
     title: raw.title,
     coverText: raw.coverText,
-    cover: `/api-media/${raw.cover.url}`,
+    cover: `${raw.cover.url}`,
     text: raw.text
   }
 }

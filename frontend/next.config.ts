@@ -8,7 +8,7 @@ const nextConfig: NextConfig = {
     return [
       {
         source: '/api-media/:path*',
-        destination: `${STRAPI_HOST}/:path*`,
+        destination: `${host}/:path*`,
       },
     ]
   },
@@ -18,7 +18,18 @@ const nextConfig: NextConfig = {
         protocol: host.startsWith('https') ? 'https' : 'http',
         hostname: new URL(host).hostname,
         port: new URL(host).port || '',
+        pathname: '/**',
+      },
+      {
+        protocol: 'http',
+        hostname: 'localhost',
+        port: '1337',
         pathname: '/uploads/**',
+      },
+      {
+        protocol: 'https',
+        hostname: 'cheerful-idea-ebe87be11f.media.strapiapp.com',
+        pathname: '/**',
       },
     ],
   },
