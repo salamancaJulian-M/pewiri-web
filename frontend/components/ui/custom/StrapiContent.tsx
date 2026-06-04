@@ -15,10 +15,8 @@ const rendererComponents = {
     }
   },
   image: ({ image }: any) => {
-    let imageUrl = image.url;
-    const fileName = imageUrl.split('/').pop();
-    const mediaHost = STRAPI_HOST;
-    const fullUrl = `${mediaHost}/${fileName}`;
+
+    const fullUrl = image.url;
     return (
       <div className="relative my-8 w-full aspect-[16/9] overflow-hidden rounded-lg" >
         <Image src={fullUrl} alt={image.alternativeText || "Pewiri"} fill className="object-cover rounded-lg" sizes="(max-width: 768px) 100vw, (max-width: 1200px) 80vw, 1200px" />
